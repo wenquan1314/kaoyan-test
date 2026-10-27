@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>考研性格适配度 · 文犬测试</title>
+<meta name="description" content="20道题，从动机、耐受、执行、现实感四个层面测一测：你的性格真的适合考研吗？">
+<style>
+:root{
+  --bg:#f0f2f7; --card:#ffffff; --tx:#1b2233; --mut:#8b93a7;
+  --a1:#e08a4b; --a2:#3a4a7a; --line:rgba(27,34,51,.12); --soft:#f7f8fb;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:"PingFang SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--tx);min-height:100vh;-webkit-font-smoothing:antialiased}
+.w{max-width:560px;margin:0 auto;padding:0 16px 40px}
+.pg{display:none}.pg.on{display:block;animation:fi .4s ease}
+@keyframes fi{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fl{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+.top{display:flex;align-items:center;gap:8px;padding:13px 0 11px;border-bottom:1px solid var(--line);margin-bottom:18px}
+.top-n{font-size:14px;font-weight:800;letter-spacing:.02em}
+.top-t{font-size:10px;color:var(--mut);border:1px solid rgba(27,34,51,.2);border-radius:10px;padding:2px 7px;margin-left:auto;letter-spacing:.12em}
+.bp{border:none;border-radius:50px;padding:13px 30px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;box-shadow:0 10px 22px -8px rgba(58,74,122,.55);transition:transform .15s}
+.bp:hover{transform:translateY(-2px)}
+.bs{border:1.5px solid rgba(27,34,51,.2);border-radius:50px;padding:12px 22px;font-size:15px;font-weight:800;cursor:pointer;font-family:inherit;background:var(--card);color:#3d4761;transition:transform .15s}
+.bs:hover{transform:translateY(-2px)}
+.ic{text-align:center;padding:10px 0 26px}
+.mug{width:136px;margin:0 auto 18px;display:block;animation:fl 3.4s ease-in-out infinite}
+h1{font-size:clamp(23px,5.6vw,34px);font-weight:900;line-height:1.22;margin-bottom:12px;letter-spacing:-.01em}
+.hl{background:linear-gradient(135deg,var(--a1),var(--a2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.sub{font-size:14px;color:#5c6480;margin-bottom:20px;line-height:1.6}
+.pills{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin-bottom:28px}
+.pill{background:var(--card);border:1px solid var(--line);border-radius:20px;padding:6px 13px;font-size:13px;color:#5c6480}
+.note{font-size:12px;color:var(--mut);margin-top:16px;line-height:1.7}
+footer{text-align:center;font-size:11px;color:var(--mut);margin-top:26px;line-height:1.8}
+.prog{position:sticky;top:6px;z-index:10;background:rgba(240,242,247,.93);backdrop-filter:blur(8px);border-radius:50px;padding:8px 14px;display:flex;align-items:center;gap:10px;margin-bottom:13px;border:1px solid var(--line)}
+.prog-t{flex:1;height:6px;background:rgba(27,34,51,.14);border-radius:3px;overflow:hidden}
+.prog-f{height:100%;border-radius:3px;background:linear-gradient(90deg,var(--a1),var(--a2));transition:width .4s ease;width:0}
+.hint{background:var(--soft);border-radius:12px;border:1px solid var(--line);padding:9px 13px;margin-bottom:13px;font-size:13px;color:#5c6480;line-height:1.6}
+.qcard{background:var(--card);border-radius:16px;padding:22px 20px;margin-bottom:12px;border:1px solid var(--line);box-shadow:0 4px 14px -8px rgba(27,34,51,.18)}
+.qnum{font-size:11px;letter-spacing:.12em;color:var(--mut);margin-bottom:9px;font-weight:700}
+.qtext{font-size:clamp(16px,2.6vw,19px);font-weight:800;line-height:1.55;margin-bottom:18px}
+.opts{display:flex;flex-direction:column;gap:9px}
+.opt{display:flex;align-items:flex-start;gap:11px;width:100%;text-align:left;border:1.5px solid var(--line);background:var(--soft);border-radius:12px;padding:13px 15px;font-size:14.5px;line-height:1.55;cursor:pointer;font-family:inherit;color:var(--tx);transition:all .15s}
+.opt:hover{border-color:rgba(58,74,122,.35);background:#fff}
+.opt.sel{border-color:var(--a2);background:#eef1f9;box-shadow:0 0 0 3px rgba(58,74,122,.09)}
+.ol{flex:none;width:23px;height:23px;border-radius:50%;background:#fff;border:1.5px solid var(--line);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800;color:var(--mut);margin-top:1px}
+.opt.sel .ol{background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;border-color:transparent}
+.nav{display:flex;gap:10px;justify-content:space-between;align-items:center}
+.nav .bp{flex:1}
+button:disabled{cursor:not-allowed}
+.rh{background:linear-gradient(140deg,var(--a2),#232f52);color:#fff;border-radius:18px;padding:26px 22px;text-align:center;margin-bottom:13px}
+.rf{font-size:44px;line-height:1;margin-bottom:10px}
+.rn{font-size:12px;letter-spacing:.22em;opacity:.7;margin-bottom:6px}
+.rnm{font-size:26px;font-weight:900;margin-bottom:10px}
+.rt{font-size:15px;line-height:1.65;opacity:.95;font-weight:600}
+.rfit{margin-top:18px;padding-top:16px;border-top:1px solid rgba(255,255,255,.18)}
+.rfitn{font-size:38px;font-weight:900;line-height:1;background:linear-gradient(135deg,#ffd9b0,#fff);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.rfitl{font-size:11px;letter-spacing:.18em;opacity:.65;margin-top:6px}
+.rvd{margin-top:12px;font-size:13.5px;line-height:1.6;background:rgba(255,255,255,.12);border-radius:10px;padding:10px 12px}
+.card{background:var(--card);border-radius:16px;padding:20px 18px;margin-bottom:12px;border:1px solid var(--line);box-shadow:0 4px 14px -8px rgba(27,34,51,.16)}
+.cl{font-size:15px;font-weight:800;margin-bottom:12px;display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.ct{font-size:14.5px;line-height:1.85;color:#39415a}
+.bdg{font-size:11px;font-weight:800;background:#eef1f9;color:var(--a2);border-radius:20px;padding:3px 10px;letter-spacing:.02em}
+.ei{padding:14px 0;border-bottom:1px dashed var(--line)}
+.ei:first-of-type{padding-top:2px}
+.ew{font-size:16px;font-weight:800;margin-bottom:4px}
+.em{font-size:13px;color:var(--a2);font-weight:700;margin-bottom:6px}
+.ey{font-size:13.5px;line-height:1.75;color:#4d5670}
+.bi{display:flex;align-items:center;gap:10px;margin-bottom:11px}
+.bn{font-size:13px;width:64px;flex:none;color:#4d5670;font-weight:700}
+.bk{flex:1;height:8px;background:var(--soft);border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.bf,.bg{height:100%;border-radius:4px;width:0;transition:width .9s cubic-bezier(.22,1,.36,1)}
+.bf{background:linear-gradient(90deg,var(--a1),var(--a2))}
+.bg{background:linear-gradient(90deg,#a9b4cd,#7a88ab)}
+.bv{font-size:12px;width:28px;text-align:right;color:var(--mut);font-weight:700}
+.ti{display:flex;gap:11px;margin-bottom:13px;align-items:flex-start}
+.ti:last-child{margin-bottom:0}
+.tn{flex:none;width:22px;height:22px;border-radius:50%;background:linear-gradient(135deg,var(--a1),var(--a2));color:#fff;font-size:12px;font-weight:800;display:flex;align-items:center;justify-content:center;margin-top:2px}
+.ti div:last-child{font-size:14px;line-height:1.75;color:#39415a}
+.warn{background:#fff6ee;border:1px solid rgba(224,138,75,.32);border-radius:14px;padding:16px 17px;margin-bottom:12px}
+.warn .cl{color:#b35f22}
+.warn .ct{color:#6d4526}
+.lock{margin-top:6px;background:linear-gradient(140deg,#fff,#f2f4f9);border:1.5px dashed rgba(58,74,122,.3);border-radius:16px;padding:22px 18px;text-align:center}
+.lock-m{font-size:14px;color:#5c6480;line-height:1.8;margin:10px 0 16px}
+.share{background:linear-gradient(140deg,#eef1f9,#fff);border:1.5px dashed rgba(58,74,122,.28);border-radius:16px;padding:18px;text-align:center;margin-top:4px}
+.share-t{font-size:15px;font-weight:800;color:#3a4a7a;margin-bottom:7px}
+.share-m{font-size:13px;line-height:1.75;color:#5c6480}
+.lock-p{font-size:30px;font-weight:900;color:var(--a2)}
+.ax{display:flex;gap:8px;flex-wrap:wrap;margin-top:2px}
+.axs{font-size:12.5px;background:var(--soft);border:1px solid var(--line);border-radius:20px;padding:5px 11px;color:#4d5670}
+.mask{position:relative}
+.mask::after{content:"";position:absolute;left:0;right:0;bottom:0;height:70px;background:linear-gradient(to bottom,rgba(255,255,255,0),#fff 85%);pointer-events:none}
+</style>
+</head>
+<body>
+
+<div id="p0" class="pg on"><div class="w">
+  <div class="top">
+    <svg width="26" height="26" viewBox="0 0 36 36" fill="none"><rect x="6" y="4" width="24" height="28" rx="3" fill="#fff" stroke="#1b2233" stroke-width="2"/><path d="M11 4v28" stroke="#1b2233" stroke-width="2"/><path d="M16 11h8M16 16h8M16 21h6" stroke="#3a4a7a" stroke-width="1.8" stroke-linecap="round"/><path d="M27 8l3 3-3 3" stroke="#e08a4b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="top-n">文犬测试</span><span class="top-t">原创自测</span>
+  </div>
+  <div class="ic">
+    <svg class="mug" viewBox="0 0 200 220">
+      <rect x="34" y="30" width="132" height="160" rx="10" fill="#fff" stroke="#1b2233" stroke-width="4"/>
+      <path d="M46 30v160" stroke="#1b2233" stroke-width="3"/>
+      <path d="M62 62h96M62 84h96M62 106h72M62 128h84M62 150h58" stroke="#c3cadb" stroke-width="3" stroke-linecap="round"/>
+      <path d="M62 62h72" stroke="#3a4a7a" stroke-width="6" stroke-linecap="round"/>
+      <path d="M62 84h48" stroke="#3a4a7a" stroke-width="6" stroke-linecap="round"/>
+      <path d="M62 106h88" stroke="#3a4a7a" stroke-width="6" stroke-linecap="round"/>
+      <path d="M62 128h36" stroke="#3a4a7a" stroke-width="6" stroke-linecap="round"/>
+      <path d="M140 62l24 26-24 26" fill="none" stroke="#e08a4b" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="166" cy="182" r="16" fill="#fff" stroke="#1b2233" stroke-width="4"/>
+      <path d="M176 194l12 12" stroke="#1b2233" stroke-width="5" stroke-linecap="round"/>
+      <path d="M158 182l5 6 10-12" fill="none" stroke="#3a4a7a" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h1>你的性格<br>真的<span class="hl">适合考研</span>吗？</h1>
+    <p class="sub">不是问你够不够努力，是问你的动机、耐受和执行方式，<br>能不能撑过这一整年。</p>
+    <div class="pills"><span class="pill">📝 20道题</span><span class="pill">⏱ 约6分钟</span><span class="pill">🧭 8种结果</span><span class="pill">🔬 十维分析</span></div>
+    <button class="bp" style="padding:14px 40px" onclick="startQ()">开始测试 →</button>
+    <p class="note">答案没有对错，凭第一反应选。<br>结果只反映你此刻的状态，不是终身判定。</p>
+  </div>
+  <footer>© 文犬测试 ｜ 原创测试，未经授权禁止转载</footer>
+</div></div>
+
+<div id="p1" class="pg"><div class="w">
+  <div class="top">
+    <svg width="26" height="26" viewBox="0 0 36 36" fill="none"><rect x="6" y="4" width="24" height="28" rx="3" fill="#fff" stroke="#1b2233" stroke-width="2"/><path d="M11 4v28" stroke="#1b2233" stroke-width="2"/><path d="M16 11h8M16 16h8M16 21h6" stroke="#3a4a7a" stroke-width="1.8" stroke-linecap="round"/><path d="M27 8l3 3-3 3" stroke="#e08a4b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="top-n">文犬测试</span><span class="top-t">原创自测</span>
+  </div>
+  <div class="prog"><div class="prog-t"><div class="prog-f" id="pf"></div></div><div style="font-size:13px;color:#8b93a7;white-space:nowrap"><span id="pnum">1</span>/<span id="ptot">20</span></div></div>
+  <div class="hint" id="hint"></div>
+  <div class="qcard"><div class="qnum" id="qnum"></div><div class="qtext" id="qtext"></div><div class="opts" id="opts"></div></div>
+  <div class="nav"><button class="bs" id="bP" onclick="prevQ()">←</button><button class="bp" id="bN" onclick="nextQ()">下一页 →</button></div>
+  <footer>© 文犬测试 ｜ 原创测试，未经授权禁止转载</footer>
+</div></div>
+
+<div id="p2" class="pg"><div class="w">
+  <div class="top">
+    <svg width="26" height="26" viewBox="0 0 36 36" fill="none"><rect x="6" y="4" width="24" height="28" rx="3" fill="#fff" stroke="#1b2233" stroke-width="2"/><path d="M11 4v28" stroke="#1b2233" stroke-width="2"/><path d="M16 11h8M16 16h8M16 21h6" stroke="#3a4a7a" stroke-width="1.8" stroke-linecap="round"/><path d="M27 8l3 3-3 3" stroke="#e08a4b" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+    <span class="top-n">文犬测试</span><span class="top-t">原创自测</span>
+  </div>
+  <div id="rH" class="rh"></div>
+  <div id="rV" class="card"></div>
+  <div id="rX" class="card"></div>
+  <div id="rR" class="warn"></div>
+  <div id="rD" class="card"></div>
+  <div id="rM" class="card"></div>
+  <div id="rO" class="card"></div>
+  <div id="rA" class="card"></div>
+  <div id="rL"></div>
+  <div class="share">
+    <div class="share-t">📸 觉得准的话，截个图发出去</div>
+    <div class="share-m">带上你的类型名发笔记，@文犬测试，看看朋友们测出来是什么。<br>每条分享都会让这个测试多帮到一个人。</div>
+  </div>
+  <div style="margin-top:10px;display:flex;gap:10px">
+    <button class="bs" style="flex:1" onclick="copyResult()">复制结果</button>
+    <button class="bs" style="flex:1" onclick="restart()">重新测一次</button>
+  </div>
+  <footer>© 文犬测试 ｜ 原创测试，未经授权禁止转载<br>结果为娱乐性自评，不构成任何升学或职业建议</footer>
+</div></div>
+
+<script>
+/* ============================================================
+   【主题配置区】换主题只改这一段，下面的逻辑不用动
+   ============================================================ */
+var CFG = {
+  brand: '文犬测试',
+  // 付费墙：改成 true 开启；PAY_LINK 填你的收款/发货链接
+  LOCK: false,
+  LOCK_TITLE: '完整报告还没解锁',
+  LOCK_DESC: '你的类型已经出来了。往下是这次测试真正值钱的部分：三个你没算过的账、你最大的风险，以及针对你这一类型的具体建议。',
+  PAY_LINK: 'https://example.com/your-payment-link',
+  PRICE: '9.9'
+};
+
+// 十个认知维度
+var DK = ['DRV','DIS','RES','DEL','FOC','PLN','INF','EMO','SOL','REA'];
+var DN = ['内驱强度','自律执行','抗压恢复','延迟满足','专注持久','规划拆解','信息搜集','情绪稳定','独处耐受','现实评估'];
+
+// 计分标定：各维度在普通作答下的均值与标准差（用于把原始分转成可比的 z 分）
+var MEAN = [2,1.45,1.6,1.01,0.02,0.2,1.62,-1.81,1,1.21];
+var SD   = [1.69,3.37,1.75,1.96,2.15,2.28,2.14,2.66,1.74,3.23];
+// 适配度换算：距离越近分越高
+var D0 = 4.5;
+// 兜底类型（时机未到型）的距离惩罚，防止它把「没什么突出特征」的人全部吸走
+var PEN = {TIM:1.5};
+
+// 三条辅助轴
+var MOTlb={intr:'内驱型动机',extr:'外驱型动机',esc:'回避型动机',vag:'未定型动机'};
+var MOTtx={
+intr:'你的动力来自「我想把这个弄明白」。自我决定论（Deci & Ryan, 2000）把这类动机称为内在动机——它预测长期坚持的效果，明显强于为了外部回报而努力。好消息是你的燃料来自内部；要小心的是，考研初试考的是应试，不是好奇心，别让考试磨损了真正驱动你的东西。',
+extr:'你的动力来自「我需要这个结果」。这没什么问题——自我决定论里的「认同调节」型外在动机，一样能支撑长期行为。真正危险的是把它推到极端：如果考研对你只剩下「不考就完了」，那么焦虑会替你踩油门，而焦虑是最快耗尽的一种燃料。',
+esc:'你的动力里混着「我想离开现在的状态」。回避型动机在动机研究里是最不稳定的一种——它能让你开始，但很难让你撑到终点，而且目标一旦达成，失落感来得格外猛。这不是说你不能考，而是你需要先把「逃离什么」换成「去往哪里」，否则三年后同样的问题会原样站在你面前。',
+vag:'你现在处在一个还没定型的阶段——不是没有动力，是动力还没有落点。目标设定研究（Locke & Latham, 2002）显示，模糊的目标几乎不产生行为推动力，而具体且有难度的目标能显著提升表现。你现在最该做的不是更努力，而是先把方向钉死。'};
+var PRSlb={bounce:'快速回弹型',steady:'稳态消化型',crash:'先崩后修型',drain:'慢性耗损型'};
+var PRStx={
+bounce:'你摔下去之后能很快爬起来，恢复周期以「天」计。这是考研这一年最实用的能力——备考真正的分水岭不是谁不出问题，而是出了问题之后谁回来得快。要注意的是：恢复快的人容易高估自己的抗总量，把「我能扛」当成无限资源用，最后在没人预警的地方突然到底。',
+steady:'你的情绪波动不大，靠稳定的日常节奏消化压力。资源守恒理论（Hobfoll, 1989）认为，稳定本身就是一种资源储备——你不容易出现断崖式崩塌。你需要警惕的是反向风险：长期低压运行会让你察觉不到自己已经累了，直到某天突然不想打开书。',
+crash:'你的恢复需要先「彻底停下来」——崩溃几天，然后再重建。这个模式本身不致命，致命的是它每次都要花掉一周以上。考研的时间表不给你这个余量。建议你提前设计一套「快速版恢复流程」，把崩溃的天数压缩到可控范围。',
+drain:'你的压力不是一次性爆发的，而是持续低量流失——一直没倒下，也一直没满血。这是四种模式里最容易被忽略的一种，也是最消耗的一种。你需要的是结构性的补给（固定的休息、确定的小回报），而不是「再坚持一下」。'};
+var TPOlb={long:'长线押注型',sprint:'节点冲刺型',cyc:'循环怀疑型'};
+var TPOtx={
+long:'你习惯把结果放在很远的未来，愿意用当下换长期收益。延迟满足的经典研究（Mischel, 1972）以及后来的大样本复核（Watts et al., 2018）都说明：真正的长期主义者不是更能忍，而是更早就把诱惑从视野里移走了。你的策略应该是「改造环境」而不是「锻炼意志」。',
+sprint:'你在有明确节点的时候效率最高，平时的匀速状态反而容易松。这不一定是缺点——考研本身就是一场有终点的比赛。但初试的准备周期通常超过八个月，光靠冲刺撑不住；你需要人为地给自己设置更多节点，把长跑切成一串短跑。',
+cyc:'你会周期性地回到「这到底值不值」这个问题上，每隔一段时间动摇一次。这类反复不是意志力问题，是决策没有真正关闭的信号——每一次怀疑，其实都是在提醒你某个前置问题还没想清楚。把它当成待办处理，而不是当成软弱压制。'};
+
+// 八种结果类型
+var TYPES = [
+{k:'NAT',n:'天生上岸型',f:'⛰️',fr:[86,96],
+t:'你不是在上岸，你是在回到本来就该在的地方',
+vd:'适配度很高。但你真正的风险不在能力，而在你对自身耐受的误判。',
+nr:'你在「坚持」和「方向稳定」两件事上同时得分高——这正是 Duckworth 等人（2007）定义 grit 时的两个组成部分。不过 Credé 等人（2017）对上百项研究做的元分析给这个结论打了个补丁：grit 与学业表现的相关只有 0.18 左右，其中真正起作用的主要是「兴趣的一致性」，而不是单纯的死磕。你的情况是两项都齐了，所以你的优势是真的。但也正因为如此，你最容易栽在一个地方：你从来没有真正崩过，所以你不知道自己的极限在哪。',
+ex:[['考研初试不筛人，筛人的是后面','你以为难的是那两天的考试','真正决定结果的往往是复试、导师名额和信息差。很多人把 100% 的精力押在初试分数上，出分后才发现自己连目标导师的研究方向都没读过。'],['你的努力会被环境稀释','自习室的氛围决定了你的下限','长期主义研究里有个反复出现的结论：稳定表现更多来自环境设计，而不是意志力。你周围人的水平、作息和信息质量，会在你察觉不到的地方持续改写你的产出。'],['你会高估自己的抗压上限','因为到目前为止你还没真正崩过','没有崩过不等于不会崩。高压持续六个月以上时，绝大多数人会出现明显的效率衰减——区别只在什么时候触发。你需要提前安排一次压力测试，而不是等到考前一崩溃才发现。']],
+rk:'把「我很能扛」当成万能钥匙，然后在最需要求助的时候不开口。',
+ac:['把目标拆到周：用 Zimmerman（2002）的自我调节学习循环——每周先定计划，执行中记录，周末复盘修正。这三步里最常被跳过的是复盘，而它恰恰是提分最快的一步。','初试分只是入场券：现在就开始了解目标导师的近三年论文和课题组氛围，复试的准备周期比你想的长。','主动安排一次模拟崩溃：连续两周把强度拉到计划的 130%，观察自己真实的恢复时间。这个数据比任何心理建设都有用。'],
+v:[4.077, 3.306, 3.221, 2.507, 2.78, 1.188, 2.328, 1.645, 1.726, 1.571]},
+
+{k:'GAM',n:'清醒赌徒型',f:'🎲',fr:[70,84],
+t:'你知道这是一场赌局，而且你已经算过牌了',
+vd:'可以冲。但你必须现在就把止损线写下来——不是记在心里。',
+nr:'你的现实评估和信息搜集能力明显高于平均水平，这是这份测试里最被低估的一项能力。Kahneman 和 Tversky（1979）提出的规划谬误说的是：人几乎总是低估完成任务所需的时间和成本，哪怕他做过很多次类似的事。你属于少数会主动做反向计算的人，这让你在选校和专业上不容易踩大坑。但考研有个残酷的结构性特点：它是一次性抽样，不是重复博弈。你擅长算概率，而概率这件事在单次事件上不兑现。',
+ex:[['你算的是概率，但考研只给你一次','大数定律不站在单次考生这边','一个成功率 30% 的事情，做十次的人会赢三次；做一次的人，只有中和不中两种结果。所以你的策略不能靠「期望值合理」，必须靠「输了也能活」。'],['你的止损线到时候会失效','沉没成本会让你在最难的时刻改主意','现在你能理性地说「考不上就去工作」。但当你已经投入了七个月，那个止损线会被你自己悄悄往后挪——这是沉没成本最典型的运作方式，而且发生时你不会觉得自己在犯错。'],['你会低估「环境不支持」的杀伤力','你算得清数字，算不清日常','家人的语气、室友的作息、没有固定座位、没有人可以讨论问题——这些不会出现在你的成本表上，但它们每天都在扣你的血。']],
+rk:'算得太清楚，于是在最难的那个月里「理性地」放弃了。',
+ac:['现在就把止损条件写下来：几次、什么时间、什么条件下停。把它发给一个会提醒你的朋友，而不是自己存着。','用心理对照（Oettingen, 2014）：先具体想象最好的结果，再具体想象最可能挡住你的那个障碍，然后把它变成「如果……我就……」的执行意图。','把赌注拆小：一志愿之外，保留一个你现在也愿意接受的选项（调剂院校、秋招、考公）。有退路的人反而发挥更稳。'],
+v:[3.718, 2.044, 2.661, 0.651, 1.732, 3.336, 3.499, 1.425, -1.434, 2.207]},
+
+{k:'SLO',n:'慢热长跑型',f:'🐢',fr:[66,80],
+t:'你的问题从来不是能不能，是能不能撑到状态来',
+vd:'适合。但前三个月会非常难熬，那段时间你需要保护自己。',
+nr:'你的学习曲线属于「前期平缓、后期陡峭」型。Ericsson 等人（1993）关于刻意练习的研究里有个容易被忽略的细节：早期阶段的进步在外部指标上几乎看不出来，因为大部分资源被用于建立底层表征。Bjork（1994）提出的「必要难度」也指向同一件事——学得更慢、更费力的材料，保留率反而更高。你的问题是结构性的：你的峰值出现在中后期，而考试日期是固定的，不会等你。',
+ex:[['你的启动期比别人长约四到六周','这段时间最容易放弃','前六周你会觉得自己在原地踏步，而身边的人已经在刷第二遍。这段时间不是你不行，是你的学习模式就是这样——但你必须提前知道这件事，否则你会把它解读成「我不适合」。'],['进度对比会拖垮你','别人的进度条和你的不是同一种进度','有人第一遍过完就已经很熟，有人第三遍才开始通。两者终点的差距通常很小，但中间的心理落差足以让人中途下车。'],['你的高峰在后期，但考试日期是固定的','所以你必须主动把峰值往前推','默认状态下你的最佳状态会出现在考前一个月左右——这其实刚好。但如果你把计划排得太满，导致后期没力气冲刺，峰值就会错位。']],
+rk:'在状态真正到来之前，就因为看不到反馈而放弃了。',
+ac:['前两个月只考核「在场率」：不比进度，只比今天有没有坐下来开始。这个阶段的目标是把行为变成本能。','用检索练习代替重读：合上书，把今天的内容默写出来。Bjork 的研究显示，这种更费力的方式效果显著优于反复阅读。','提前四周进入考试节奏：把作息、模考时间、科目顺序完全对齐真实考试，让状态峰值落在考场上，而不是考完之后。'],
+v:[1.745, -1.96, -0.899, 2.344, 0.855, -0.764, 0.24, 1.515, 2.18, 1.111]},
+
+{k:'ACA',n:'学术适配型',f:'🔭',fr:[58,74],
+t:'你适合的是研究本身，不一定是那张文凭',
+vd:'你需要重新选赛道：学硕或直博，和专硕是两条完全不同的路。',
+nr:'你的驱动来自「想知道别人还不知道的东西」——这是内在动机的典型形态。Amabile 的研究反复显示，内在动机是创造性工作最强的预测因子，而外部评价和 deadline 会显著削弱它。这意味着你能做好研究，但未必能在应试体系里发挥。更现实的问题是：读研的痛苦来源里，学术本身只占很小一部分，大量消耗来自导师关系、经费压力和行政流程。你要选的不是一个专业，是一个具体的人和一个具体的课题组。',
+ex:[['初试考的是应试，不是研究能力','这两件事的相关度比你以为的低','每年都有大量真正具备研究潜力的人卡在初试，也有大量应试高手进了课题组之后完全不适应。你必须把这两件事当成两个独立任务来准备。'],['读研的痛苦大部分不在学术','导师、经费、行政流程才是主要消耗源','同一个专业，在不同导师手上是两种完全不同的生活。组会频率、毕业要求、是否允许实习、论文署名规则——这些决定你这三年怎么过，而它们不会写在招生简章上。'],['好奇心会在「被安排课题」时被磨损','这是你最需要防的隐性风险','内在动机最怕的是自主性被剥夺。如果一个课题组要求你做完全不感兴趣的指定题目，你的核心优势会被直接抵消。']],
+rk:'为了那张文凭，走进一个不适合你的课题组，然后连原本的热爱一起耗掉。',
+ac:['优先级重排：导师 &gt; 实验室氛围 &gt; 学校 &gt; 专业。去知网搜目标导师近三年的论文，看署名顺序和学生一作比例。','找在读学长问三件事：导师放不放手、组会多久一次、往届毕业生的实际去向。别问上岸经验，问日常。','认真评估直博和学硕：你的优势在长周期的深度投入，就业导向的专硕竞争对你是性价比最低的战场。'],
+v:[3.526, 2.839, 0.862, 1.84, 2.686, -1.935, 0.912, -0.279, 1.842, -1.45]},
+
+{k:'FAK',n:'伪努力高危型',f:'🕳️',fr:[30,46],
+t:'你最危险的地方，是你看起来太努力了',
+vd:'按现在的状态直接上场，大概率是陪跑。',
+nr:'你的时间投入和你的实际掌握之间存在明显落差——这不是态度问题，是方法问题。Ericsson 关于刻意练习的核心结论是：决定效果的从来不是练习时长，而是专注度、即时反馈和持续修正这三件事。抄笔记、看网课、反复划线，恰好是三种「感觉在学习」但认知参与度最低的行为。更麻烦的是，这个方法问题会自我巩固：因为你确实很累，你会用疲惫感来证明自己在努力，从而更难发现问题。',
+ex:[['坐在那里不等于学会了','时长是最容易造假、也最没用的指标','你记得自己学了多久，但记不住自己学会了什么——这两者的差距就是你的真实风险。'],['抄笔记和看网课是最舒服、也最无效的两种学习','因为它们不产生任何「 retrieval 」','认知心理学里对提取练习的研究结论非常一致：主动回想的效果显著优于被动输入。而抄写和听课，恰好都是输入。'],['你在用「我很累」替代「我进步了」','疲惫感会成为方法的遮羞布','当你用消耗感来衡量投入时，任何低效的方法都能通过验收——因为累是真的，只是没换来东西。']],
+rk:'用战术上的勤奋，掩盖战略上的空缺。',
+ac:['把每天的产出改成输出：合上书，写出今天真正记住的三点。写不出来，今天就不算完成。','每周做一次自测：用真题或模拟题，用分数而不是感觉判断进度。分数会让你难受，但它是唯一不会骗你的指标。','先花两周只做一件事：把目标院校、专业、参考书、分数线、报录比全部查清并定死。方向不定，努力就会摊薄。'],
+v:[0.01, -1.523, -0.659, -1.509, -1.987, -2.712, -0.918, -2.077, 1.421, -1.686]},
+
+{k:'ESC',n:'逃避型预警',f:'🚪',fr:[24,40],
+t:'你想逃开的那些东西，读研三年不会替你解决',
+vd:'建议在决定之前，先停下来把一件事想清楚。',
+nr:'你的选项里反复出现「不想」「还没有」「先这样」——这在动机研究里对应回避型动机，它是预测倦怠和中断最强的一类信号。Hobfoll（1989）的资源守恒理论指出：当人处于资源持续流失、且看不到补充的状态时，会进入防御性收缩——选择「不做决定」来保护剩余资源。考研很容易被当成这样一种保护壳。但结构性的问题是：研究生阶段需要做的选择比现在更多，不是更少，而你的决策资源并没有变多。',
+ex:[['研究生阶段的压力比现在更大','它不是缓冲带，是另一条赛道','研一要定方向、跟课题、处理师门关系；研二要出成果；研三照样要面对求职。你现在的犹豫不会在入学那天消失，它只会换个场景重新出现。'],['三年后你会面对同样的问题','只是那时你二十八岁，选项更少','这是最容易被忽略的成本：不是钱，是年龄带来的选项收缩。同样的问题，二十五岁解决和二十八岁解决，可选路径完全不同。'],['目标达成之后最容易失落','这在回避型动机的人身上格外明显','为了「离开」而努力的人，在到达之后常常出现明显的空落感——因为驱动你的那个东西消失了，而新的目标还没建立。']],
+rk:'考上了，然后发现这根本不是你要的。',
+ac:['做一次反向测试：如果现在有人给你一个你觉得不错的 offer，你还考吗？答案如果是「那就不考了」，说明你需要重新审视动机。','找三个在读研究生聊他们的日常——不是上岸经验，是上周三他们具体做了什么、遇到什么烦心事。','给自己一个月的「不考研」实验期：完全不碰备考，去看招聘、去实习、去和人聊。一个月后你的真实倾向会清晰很多。'],
+v:[-1.183, -2.34, -1.424, -1.536, -1.357, -1.434, -1.692, -3.529, -0.525, -2.545]},
+
+{k:'MIS',n:'错位天赋型',f:'🧭',fr:[28,44],
+t:'你的天赋在考场之外',
+vd:'考研对你可能是性价比最低的那条路。',
+nr:'你的得分集中在信息搜集、现实判断和人际感知上——这是一组在真实工作场景里非常值钱、但在标准化考试里几乎用不上的能力。Holland 的职业匹配理论说的就是这件事：同样的能力组合，放在匹配的环境里是优势，放在错位的环境里只是消耗。你不是不能考上，而是考上也未必更值钱。这句话听起来刺耳，但它是这次测试里最值得你认真对待的一句。',
+ex:[['你的核心优势，在考场里用不上','信息整合和人际判断不参与计分','考试只测量有限几种能力。你的长处在这个测量体系里是隐形的，这意味着你的投入产出比天生低于别人。'],['三年读研对你的机会成本更高','因为你的能力需要在实践中复利','你的优势是一条「越早进入真实场景，积累越快」的曲线。把它推迟三年，损失的不只是三年工资，还有三年的经验复利。'],['你不是不能考，是考上了也不一定更值钱','文凭对你的边际收益低于平均值','对有些人，研究生学历是硬门槛；对另一些人，它只是一张更贵的门票。你要先确认自己属于哪一类。']],
+rk:'用自己最不擅长的方式，去争一个自己其实不那么需要的东西。',
+ac:['先做真正的职业访谈：找三到五个正在做你向往工作的人，问他们每天实际做什么、入行路径、以及对学历的真实看法。','如果确实需要学历提升，认真评估替代路径：非全日制、在职研究生、留学、行业认证。它们的成本和适配度可能好得多。','给自己保留「先工作两年再决定」这个选项。两年后你会带着更真实的信息回来做这个决定，而不是现在的想象。'],
+v:[-1.428, -1.363, -0.457, -0.549, -0.536, 2.006, 3.482, 0.844, -1.724, 4.85]},
+
+{k:'TIM',n:'时机未到型',f:'⏳',fr:[42,58],
+t:'不是你不适合，是现在的你还不够确定',
+vd:'建议先补齐条件再上场，而不是边考边想。',
+nr:'你的各项得分都在中等区间——不是能力不足，是还没有一个足够强的理由把它们串起来。Locke 和 Latham（2002）的目标设定理论里有个很实用的结论：目标对表现的推动，取决于两个变量——具体程度和承诺强度。你现在缺的不是第二个（你并不排斥努力），而是第一个：你还没真正决定。而「没决定」这件事本身是有成本的，它每天都在消耗你的注意力和决策能量。',
+ex:[['方向未定的人，努力会被摊薄','因为你要同时维护好几个可能','同时准备两个专业、三所学校的人，每一条的推进速度都只有专注者的一半左右。这不是时间分配问题，是切换成本问题。'],['摇摆本身消耗的能量，比你想象的多','每一次重新考虑都有固定开销','每动摇一次，你要重新查一遍信息、重新说服自己、重新说服家人。这些开销不产生任何进度，但它们是真实的消耗。'],['你需要的不是更多时间，是一次真正的决断','时间只会让摇摆更贵','很多人以为再想想就会清楚。实际上在没有新信息的情况下，多想两个月通常只是把焦虑延长两个月。']],
+rk:'在「再想想」里，把最好的时间窗口耗掉了。',
+ac:['给自己设一个两周的决断期，到期必须给出结论——考或不考，都要写下来。没有结论本身就是决策，只是最贵的那种。','用最坏情况做决策：认真写下「如果考不上，我会怎么样」。如果你能接受那个画面，就去做；如果不能，那答案已经出来了。','先做最小动作：把三所候选学校的分数线、报录比、参考书目、往年复试情况查完整。数据到手之后，大部分纠结会自己消失。'],
+v:[0, 0, 0, 0, 0, 0, 0, 0, 0, 0]}
+];
+
+// 二十道题
+var QS=[
+{q:'如果只能说一句真话，你考研最直接的原因是？',o:[
+['A','我真的想把这个领域研究明白',{intr:3,DRV:2}],
+['B','现在的学历撑不起我想要的工作',{extr:3,REA:1}],
+['C','不想这么早进入职场',{esc:3}],
+['D','大家都在考，我不考好像说不过去',{vag:3,extr:1}],
+['E','我还不确定，但我想给自己留条路',{vag:2,extr:1}]]},
+{q:'一件你投入了三个月的事，被通知「白做了」，你的第一反应是？',o:[
+['A','先难受一晚，第二天开始想下一步',{RES:2,bounce:2}],
+['B','立刻复盘问题出在哪，看能不能补救',{PLN:2,RES:1,bounce:1}],
+['C','会怀疑自己是不是根本不适合',{drain:2,EMO:-1}],
+['D','需要几天完全不想这件事，才能回来',{crash:2}],
+['E','其实我早就隐约觉得不对，只是没说',{REA:2,INF:1}]]},
+{q:'连续一个月，几乎没人跟你说话，每天对着书本十小时——',o:[
+['A','可以，我甚至有点享受',{SOL:3}],
+['B','能撑，但周末必须有社交回血',{SOL:1}],
+['C','撑不住，我需要有人一起',{SOL:-2}],
+['D','头两周还行，第三周开始效率掉',{FOC:-1,RES:-1}],
+['E','没试过，不确定',{SOL:0}]]},
+{q:'一个你很想要的东西，需要等两年才能得到，你会？',o:[
+['A','等，而且会每天为它做一点',{DEL:3,long:2}],
+['B','等，但中间会反复怀疑值不值',{DEL:1,cyc:2}],
+['C','我会找一个半年内能拿到的替代',{DEL:-2}],
+['D','我会想办法把它缩短到一年',{PLN:2,sprint:1}],
+['E','两年太久了，我不太敢押这么大',{DEL:-1,REA:1}]]},
+{q:'日常计划被突发事件打乱，你会？',o:[
+['A','当晚重排，第二天照常',{PLN:2,RES:1,bounce:1}],
+['B','烦躁，但用加班把进度补回来',{DIS:2,steady:1}],
+['C','接下来整周的节奏都会乱',{PLN:-1,EMO:-1}],
+['D','干脆放弃今天剩下的计划',{DIS:-2}],
+['E','我本来就不怎么做严格计划',{PLN:-1,sprint:1}]]},
+{q:'遇到一个完全看不懂的知识点，你通常？',o:[
+['A','换三个资料来源，直到搞懂',{INF:2,DIS:2}],
+['B','先标记，往后放，回头再说',{PLN:-1}],
+['C','会怀疑是不是自己太笨',{EMO:-2,drain:1}],
+['D','找人问，讲一遍就懂了',{INF:1}],
+['E','绕过去，考试不一定考',{REA:1,DRV:-1}]]},
+{q:'备考期间朋友喊你出去玩，而你的进度落后——',o:[
+['A','不去，我心里过不去',{DIS:2,DEL:1}],
+['B','去，但回来会补上',{DIS:1,EMO:1}],
+['C','去了，然后愧疚一整周',{EMO:-2,drain:1}],
+['D','看心情，常常就去了',{DIS:-2}],
+['E','我会提前把这段时间的社交排掉',{PLN:2,DEL:1}]]},
+{q:'关于目标院校和专业，你现在的状态是？',o:[
+['A','分数线、报录比、导师、真题都查过了',{INF:3,REA:2}],
+['B','大致定了，细节还没查',{INF:-1,REA:-1}],
+['C','还没定，在几个之间摇摆',{PLN:-2,vag:2}],
+['D','定了，但主要是听别人说这个好',{INF:-2,REA:-2,extr:1}],
+['E','我连考不考都还没完全定',{vag:3}]]},
+{q:'你过去的「努力」，最像哪一种？',o:[
+['A','每天固定量，能持续很久',{DIS:3,FOC:2}],
+['B','一阵特别猛，一阵完全摆烂',{FOC:-2,sprint:2}],
+['C','看起来很忙，但产出不稳定',{DIS:-1,REA:-1}],
+['D','只在截止日期前爆发',{PLN:-1,DIS:-1,sprint:1}],
+['E','我知道自己没真正努力过',{DIS:-2,REA:1}]]},
+{q:'情绪最低的时候，你靠什么回来？',o:[
+['A','睡一觉，第二天照常',{EMO:2,RES:2,bounce:2}],
+['B','跟人说，说出来就好了',{EMO:1,steady:1}],
+['C','需要好几天，期间什么都不想干',{crash:2,EMO:-1}],
+['D','会一直低着，直到事情解决',{drain:2}],
+['E','我会分析自己为什么低落',{EMO:1,REA:1}]]},
+{q:'你想象中的「上岸之后」是什么？',o:[
+['A','终于可以做真正想做的事',{intr:2,DRV:2}],
+['B','父母和别人的眼光会不一样',{extr:2}],
+['C','我可以再拖三年，不用现在做选择',{esc:3}],
+['D','简历能过更多筛',{extr:1,REA:1}],
+['E','说实话我想象不出来',{vag:2}]]},
+{q:'如果没考上，你最可能？',o:[
+['A','二战，我没问题',{RES:2,DRV:1,bounce:1}],
+['B','找工作，考研本来就是选项之一',{REA:2,bounce:1}],
+['C','会崩溃很久',{EMO:-2,crash:2}],
+['D','不知道，从没想过这个可能',{REA:-2,PLN:-2,vag:1}],
+['E','会怀疑自己是不是选错了路',{drain:2,EMO:-1}]]},
+{q:'看到别人保研或拿到好 offer，你的真实感受是？',o:[
+['A','会焦虑，但很快转成「我该怎么调整」',{EMO:1,PLN:1,bounce:1}],
+['B','会焦虑好几天',{EMO:-1,drain:1}],
+['C','真心替他高兴，然后继续自己的',{EMO:2,steady:1}],
+['D','会忍不住比较，然后泄气',{EMO:-2}],
+['E','会分析他到底做对了什么',{INF:2,REA:1}]]},
+{q:'你对「重复」的态度是？',o:[
+['A','重复到熟练是必要的，我能接受',{DIS:2,FOC:1}],
+['B','重复三遍以上我就开始走神',{FOC:-2}],
+['C','我需要不断有新东西刺激',{FOC:-1}],
+['D','重复让我安心，我知道进度在哪',{SOL:1,DIS:1,steady:1}],
+['E','我会把重复的事琢磨出新方法',{INF:1,PLN:1}]]},
+{q:'独处时，你的脑子通常？',o:[
+['A','安静，能长时间停在一件事上',{FOC:3,SOL:1}],
+['B','会自己跑题，需要不断拉回来',{FOC:-1}],
+['C','开始想各种还没发生的事',{EMO:-1,cyc:1}],
+['D','我需要有背景音才能静下来',{SOL:1}],
+['E','会把一件事想得很深，有时停不下来',{intr:1,FOC:1}]]},
+{q:'关于成本（学费、时间、错过的工作机会），你？',o:[
+['A','算过，我知道最坏的情况',{REA:3}],
+['B','大概知道，没细算',{REA:-1}],
+['C','不敢算，怕算完就不想考了',{REA:-2,EMO:-1,cyc:1}],
+['D','这些不重要，考上再说',{REA:-3}],
+['E','家里承担，我没怎么想过',{REA:-2,extr:1}]]},
+{q:'你对「做研究、写论文」的真实感觉是？',o:[
+['A','有兴趣，想知道别人还不知道的东西',{intr:3,DRV:1}],
+['B','谈不上兴趣，但能接受',{intr:0}],
+['C','抗拒，我更想做实际的事',{intr:-3}],
+['D','没什么概念',{vag:2}],
+['E','有点怕，觉得自己做不来',{EMO:-1,intr:-1}]]},
+{q:'你过去做成过一件需要长期坚持的事吗？',o:[
+['A','有，而且做成了',{DIS:3,DRV:2}],
+['B','有，但半途放弃了',{RES:-1,drain:1}],
+['C','有，不过是被逼的',{DIS:1,extr:1}],
+['D','没有，我很少坚持超过一个月',{DIS:-3}],
+['E','有，但那件事是我喜欢的',{DRV:2,intr:1}]]},
+{q:'你更相信哪句话？',o:[
+['A','长期主义，时间会给答案',{DEL:2,long:2}],
+['B','关键节点冲刺就够了',{sprint:2}],
+['C','计划和变化，我更信变化',{PLN:-1,vag:1}],
+['D','努力不一定有用，但不努力一定没用',{DIS:1}],
+['E','我不知道该信什么',{vag:2}]]},
+{q:'如果现在有人明确告诉你「你不适合考研」，你的第一反应是？',o:[
+['A','我会问他依据，然后自己判断',{REA:2,INF:1}],
+['B','会难受，但会认真想一想',{EMO:1,REA:1}],
+['C','会更想证明他错了',{RES:2,DRV:1}],
+['D','会动摇，可能真的不考了',{EMO:-2,vag:1}],
+['E','松一口气，其实我自己也这么觉得',{esc:2,REA:1}]]}
+];
+
+/* ============================================================
+   【以下为通用逻辑，换主题不用改】
+   ============================================================ */
+var N=QS.length, cur=0, ans=Array(N).fill(null), last=null;
+document.getElementById('ptot').textContent=N;
+
+function show(id){document.querySelectorAll('.pg').forEach(function(p){p.classList.remove('on');});document.getElementById(id).classList.add('on');window.scrollTo(0,0);}
+function startQ(){cur=0;ans=Array(N).fill(null);loadQ(0);show('p1');}
+function restart(){show('p0');}
+
+function loadQ(n){
+  document.getElementById('qnum').textContent='Q'+String(n+1).padStart(2,'0')+' / '+N;
+  document.getElementById('qtext').textContent=QS[n].q;
+  document.getElementById('pf').style.width=Math.round((n+1)/N*100)+'%';
+  document.getElementById('pnum').textContent=n+1;
+  document.getElementById('hint').textContent = n>=16
+    ? '💡 最后几题比较扎心，选真实反应就行'
+    : '☕ 选第一感觉，不要选「应该怎样」的答案';
+  var el=document.getElementById('opts');el.innerHTML='';
+  QS[n].o.forEach(function(o){
+    var b=document.createElement('button');
+    b.className='opt'+(ans[n]===o[0]?' sel':'');
+    b.dataset.v=o[0];
+    b.innerHTML='<span class="ol">'+o[0]+'</span><span>'+o[1]+'</span>';
+    b.onclick=function(){pick(o[0]);};
+    el.appendChild(b);
+  });
+  var bP=document.getElementById('bP');
+  bP.disabled=(n===0);bP.style.opacity=(n===0?'0.35':'1');
+  document.getElementById('bN').textContent=(n===N-1?'看结果 →':'下一页 →');
+}
+function pick(v){
+  ans[cur]=v;
+  document.querySelectorAll('.opt').forEach(function(b){b.classList.toggle('sel',b.dataset.v===v);});
+}
+function nextQ(){if(cur>=N-1){calc();return;}cur++;loadQ(cur);}
+function prevQ(){if(cur>0){cur--;loadQ(cur);}}
+
+// 标准化：把原始分转成 z 分，消除各维度量纲差异
+function toZ(uv){return uv.map(function(v,i){return (v-MEAN[i])/SD[i];});}
+// z 空间欧氏距离：越小越像。比余弦相似度可靠，因为它同时看绝对水平和形状
+function dist(a,b){var s=0;for(var i=0;i<a.length;i++){var d=a[i]-b[i];s+=d*d;}return Math.sqrt(s);}
+function zsim(zuv,v){return dist(zuv,v);}
+
+function calc(){
+  var uv=Array(10).fill(0),mot={intr:0,extr:0,esc:0,vag:0},prs={bounce:0,steady:0,crash:0,drain:0},tpo={long:0,sprint:0,cyc:0};
+  QS.forEach(function(q,i){
+    if(!ans[i])return;
+    var o=q.o.find(function(x){return x[0]===ans[i];});
+    if(!o||!o[2])return;
+    Object.keys(o[2]).forEach(function(k){
+      var idx=DK.indexOf(k);
+      if(idx>=0)uv[idx]+=o[2][k];
+      else if(mot.hasOwnProperty(k))mot[k]+=o[2][k];
+      else if(prs.hasOwnProperty(k))prs[k]+=o[2][k];
+      else if(tpo.hasOwnProperty(k))tpo[k]+=o[2][k];
+    });
+  });
+  var top=function(o,d){var ks=Object.keys(o);var m=ks.reduce(function(a,b){return o[a]>=o[b]?a:b;});return o[m]>0?m:d;};
+  var motK=top(mot,'vag'), prsK=top(prs,'steady'), tpoK=top(tpo,'long');
+  var zuv=toZ(uv);
+  var scored=TYPES.map(function(t){return {t:t,d:dist(zuv,t.v)+(PEN[t.k]||0)};});
+  scored.sort(function(a,b){return a.d-b.d;});
+  var win=scored[0].t, winD=dist(zuv,win.v);
+  var norm=Math.max(0,Math.min(1,1-winD/D0));
+  var fit=Math.round(win.fr[0]+(win.fr[1]-win.fr[0])*norm);
+  last={t:win,fit:fit,uv:uv,zuv:zuv,oth:scored.slice(1,5),motK:motK,prsK:prsK,tpoK:tpoK};
+  render(last);
+  show('p2');
+}
+
+function card(id,lbl,html,cls){
+  var el=document.getElementById(id);
+  el.className='card'+(cls?' '+cls:'');
+  el.innerHTML='<div class="cl">'+lbl+'</div><div class="ct">'+html+'</div>';
+}
+
+function render(R){
+  var T=R.t;
+  document.getElementById('rH').innerHTML=
+    '<div class="rf">'+T.f+'</div><div class="rn">你的考研人格</div><div class="rnm">'+T.n+'</div>'+
+    '<div class="rt">「'+T.t+'」</div>'+
+    '<div class="rfit"><div class="rfitn">'+R.fit+'%</div><div class="rfitl">考研适配度</div></div>'+
+    '<div class="rvd">'+T.vd+'</div>';
+
+  card('rV','🧬 核心判断',T.nr);
+
+  var xH='<div class="cl">🧾 三个你可能没算过的账</div>';
+  T.ex.forEach(function(e,i){
+    xH+='<div class="ei"'+(i===T.ex.length-1?' style="border:none;padding-bottom:0"':'')+'>'+
+        '<div class="ew">'+e[0]+'</div><div class="em">'+e[1]+'</div><div class="ey">'+e[2]+'</div></div>';
+  });
+  document.getElementById('rX').innerHTML=xH;
+
+  document.getElementById('rR').innerHTML='<div class="cl">⚠️ 你最大的风险</div><div class="ct">'+T.rk+'</div>';
+
+  var mx=Math.max.apply(null,R.uv.concat([1]));
+  var dH='<div class="cl">📊 你的十维画像（Top 5）</div>';
+  R.uv.map(function(v,i){return{n:DN[i],v:v};}).sort(function(a,b){return b.v-a.v;}).slice(0,5).forEach(function(d){
+    var p=Math.round(Math.max(0,d.v)/mx*88);
+    dH+='<div class="bi"><div class="bn">'+d.n+'</div><div class="bk"><div class="bf" data-p="'+p+'"></div></div><div class="bv">'+p+'</div></div>';
+  });
+  document.getElementById('rD').innerHTML=dH;
+
+  var mH='<div class="cl">🧭 三条关键轴</div>';
+  mH+='<div class="ey" style="margin-bottom:10px"><b>动机来源 · </b>'+MOTlb[R.motK]+'　'+MOTtx[R.motK]+'</div>';
+  mH+='<div class="ey" style="margin-bottom:10px"><b>压力模式 · </b>'+PRSlb[R.prsK]+'　'+PRStx[R.prsK]+'</div>';
+  mH+='<div class="ey"><b>时间观 · </b>'+TPOlb[R.tpoK]+'　'+TPOtx[R.tpoK]+'</div>';
+  document.getElementById('rM').innerHTML=mH;
+
+  var oH='<div class="cl">🔍 你也可能偏向这几种</div>';
+  var ds=R.oth.map(function(s){return s.d;});
+  var dmin=Math.min.apply(null,ds), dmax=Math.max.apply(null,ds);
+  R.oth.forEach(function(s){
+    var p=(dmax-dmin<0.01)?70:Math.max(10,Math.round(88-78*(s.d-dmin)/(dmax-dmin)));
+    oH+='<div class="bi"><div class="bn" style="width:86px">'+s.t.f+' '+s.t.n+'</div><div class="bk"><div class="bg" data-p="'+p+'"></div></div><div class="bv">'+p+'</div></div>';
+  });
+  document.getElementById('rO').innerHTML=oH;
+
+  var aH='<div class="cl">📌 给你的下一步</div>';
+  T.ac.forEach(function(a,i){
+    aH+='<div class="ti"><div class="tn">'+(i+1)+'</div><div>'+a+'</div></div>';
+  });
+  document.getElementById('rA').innerHTML=aH;
+
+  var L=document.getElementById('rL');
+  if(CFG.LOCK){
+    ['rX','rR','rD','rM','rO','rA'].forEach(function(id){document.getElementById(id).classList.add('mask');});
+    L.innerHTML='<div class="lock"><div class="lock-p">¥'+CFG.PRICE+'</div>'+
+      '<div class="cl" style="justify-content:center;margin-top:6px">'+CFG.LOCK_TITLE+'</div>'+
+      '<div class="lock-m">'+CFG.LOCK_DESC+'</div>'+
+      '<button class="bp" style="width:100%" onclick="unlock()">解锁完整报告 →</button></div>';
+  }else{ L.innerHTML=''; }
+
+  setTimeout(function(){
+    document.querySelectorAll('.bf,.bg').forEach(function(el){el.style.width=el.dataset.p+'%';});
+  },150);
+}
+function unlock(){ window.open(CFG.PAY_LINK,'_blank'); }
+
+function copyResult(){
+  if(!last)return;
+  var T=last.t;
+  var s='【'+CFG.brand+'】我的考研人格：'+T.n+'\n'+
+        '「'+T.t+'」\n考研适配度 '+last.fit+'%\n'+
+        '动机·'+MOTlb[last.motK]+'｜压力·'+PRSlb[last.prsK]+'｜时间观·'+TPOlb[last.tpoK];
+  if(navigator.clipboard&&navigator.clipboard.writeText){
+    navigator.clipboard.writeText(s).then(function(){alert('结果已复制，去粘贴分享吧');},function(){prompt('复制这段：',s);});
+  }else{ prompt('复制这段：',s); }
+}
+</script>
+</body>
+</html>
